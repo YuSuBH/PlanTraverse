@@ -47,6 +47,8 @@ export default function SortableItinerary({
   const handleDragEnd = async (event: DragEndEvent) => {
     const { active, over } = event;
 
+    if (!over) return;
+
     if (active.id !== over?.id) {
       const oldIndex = localLocation.findIndex((item) => item.id === active.id);
       const newIndex = localLocation.findIndex((item) => item.id === over.id);
