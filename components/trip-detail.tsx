@@ -23,10 +23,10 @@ export default function TripDetailClient({ trip }: TripDetailClientProps) {
 
   return (
     <div className="container mx-auto px-4 py-8 space-y-8">
-      {true && ( //trip.imageUrl
+      {trip.imageUrl && (
         <div className="w-full h-72 md:h-96 overflow-hidden rounded-xl shadow-lg relative">
           <Image
-            src="/vlcsnap-2025-07-04-14h33m53s493.png"
+            src={trip.imageUrl}
             alt={trip.title}
             className="object-cover"
             fill
