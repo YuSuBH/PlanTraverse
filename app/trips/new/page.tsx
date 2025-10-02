@@ -5,7 +5,6 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { createTrip } from "@/lib/actions/create-trip";
 import { UploadButton } from "@/lib/upload-thing";
 import { cn } from "@/lib/utils";
-import { error } from "console";
 import Image from "next/image";
 import { useState, useTransition } from "react";
 

@@ -66,7 +66,7 @@ export default function GlobePage() {
               <div className="p-6">
                 <h2 className="text-2xl font-semibold mb-4">
                   {" "}
-                  See where you've been...
+                  See where you have been...
                 </h2>
 
                 <div className="h-[600px] w-full relative">
