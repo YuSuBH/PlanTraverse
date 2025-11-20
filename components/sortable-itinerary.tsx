@@ -29,7 +29,7 @@ function SortableItem({ item }: { item: Location }) {
     >
       <div>
         <h4 className="font-medium text-gray-800">{item.locationTitle}</h4>
-        <p className="text-sm text-gray-500 truncate max-w-xs">{`Lat: ${item.lat}, Lng: ${item.lon}`}</p>
+        <p className="text-sm text-gray-500 truncate max-w-xs">{`Lat: ${item.lat}, Lng: ${item.lng}`}</p>
       </div>
 
       <div className="text-sm text-gray-600">Day {item.order}</div>

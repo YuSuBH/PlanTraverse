@@ -14,7 +14,7 @@ async function geocodeAddress(address: string) {
 
   const data = await response.json();
   const { lat, lng } = data.results[0].geometry.location;
-  return { lat, lon: lng };
+  return { lat, lng: lng };
 }
 
 export async function addLocation(formData: FormData, tripId: string) {
@@ -28,7 +28,7 @@ export async function addLocation(formData: FormData, tripId: string) {
     throw new Error("Missing Address.");
   }
 
-  const { lat, lon } = await geocodeAddress(address);
+  const { lat, lng } = await geocodeAddress(address);
 
   const count = await prisma.location.count({
     where: { tripId },
@@ -38,7 +38,7 @@ export async function addLocation(formData: FormData, tripId: string) {
     data: {
       locationTitle: address,
       lat,
-      lon,
+      lng,
       tripId,
       order: count,
     },

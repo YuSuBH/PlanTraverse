@@ -18,7 +18,7 @@ export default function Map({ itineraries }: MapProps) {
 
   const center =
     itineraries.length > 0
-      ? { lat: itineraries[0].lat, lng: itineraries[0].lon }
+      ? { lat: itineraries[0].lat, lng: itineraries[0].lng }
       : { lat: 0, lng: 0 };
 
   return (
@@ -30,7 +30,7 @@ export default function Map({ itineraries }: MapProps) {
       {itineraries.map((location, key) => (
         <Marker
           key={key}
-          position={{ lat: location.lat, lng: location.lon }}
+          position={{ lat: location.lat, lng: location.lng }}
           title={location.locationTitle}
         />
       ))}

@@ -20,7 +20,7 @@ export async function GET() {
       select: {
         locationTitle: true,
         lat: true,
-        lon: true,
+        lng: true,
         trip: {
           select: {
             title: true,
@@ -31,12 +31,12 @@ export async function GET() {
 
     const transformedLocations = await Promise.all(
       locations.map(async (loc) => {
-        const geocodeResult = await getCountryFromCoords(loc.lat, loc.lon);
+        const geocodeResult = await getCountryFromCoords(loc.lat, loc.lng);
 
         return {
           name: `${loc.trip.title} - ${geocodeResult.formattedAddress}`,
           lat: loc.lat,
-          lng: loc.lon,
+          lng: loc.lng,
           country: geocodeResult.country,
         };
       })

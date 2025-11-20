@@ -23,6 +23,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   trips         Trip[]
+  experiences   Experience[]
  
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -87,9 +88,43 @@ model Location {
   id String @id @default(cuid())
   locationTitle String
   lat Float
-  lon Float   //should be lng to match apis
+  lng Float   //should be lng to match apis
   trip Trip @relation(fields: [tripId], references: [id])
   tripId String
   order Int @default(0)
   createdAt DateTime @default(now())
+}
+
+model Experience {
+  id String @id @default(cuid())
+  title String
+  description String @db.Text
+  locationName String
+  lat Float
+  lng Float
+  address String?
+  
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String
+  
+  images ExperienceImage[]
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@index([lat, lng])
+  @@index([userId])
+}
+
+model ExperienceImage {
+  id String @id @default(cuid())
+  url String
+  key String
+  
+  experience Experience @relation(fields: [experienceId], references: [id], onDelete: Cascade)
+  experienceId String
+  
+  createdAt DateTime @default(now())
+  
+  @@index([experienceId])
 }

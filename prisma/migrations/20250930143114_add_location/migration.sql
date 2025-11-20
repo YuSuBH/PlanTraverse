@@ -3,7 +3,7 @@ CREATE TABLE "public"."Location" (
     "id" TEXT NOT NULL,
     "locationTitle" TEXT NOT NULL,
     "lat" DOUBLE PRECISION NOT NULL,
-    "lon" DOUBLE PRECISION NOT NULL,
+    "lng" DOUBLE PRECISION NOT NULL,
     "tripId" TEXT NOT NULL,
     "order" INTEGER NOT NULL DEFAULT 0,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
