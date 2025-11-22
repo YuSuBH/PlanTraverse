@@ -7,9 +7,15 @@ const nextConfig: NextConfig = {
       {
         hostname: "i9ilt2apv6.ufs.sh",
       },
+      {
+        hostname: "utfs.io",
+      },
+      {
+        hostname: "avatars.githubusercontent.com",
+      },
     ],
   },
-  // devIndicators: true,
+  // devIndicators: false,
 };
 
 export default nextConfig;
