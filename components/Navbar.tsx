@@ -30,6 +30,12 @@ export default function Navbar({ session }: { session: Session | null }) {
                 Experiences
               </Link>
               <Link
+                href={"/experiences/my"}
+                className="text-slate-900 hover:text-sky-500"
+              >
+                My Experiences
+              </Link>
+              <Link
                 href={"/globe"}
                 className="text-slate-900 hover:text-sky-500"
               >
