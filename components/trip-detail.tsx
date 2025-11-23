@@ -35,13 +35,13 @@ export default function TripDetailClient({ trip }: TripDetailClientProps) {
         </div>
       )}
 
-      <div className="bg-white p-6 shadow rounded-lg flex flex-col md:flex-row justify-between items-start md:items-center">
+      <div className="bg-card p-6 shadow rounded-lg flex flex-col md:flex-row justify-between items-start md:items-center border border-border">
         <div>
-          <h1 className="text-4xl font-extrabold text-gray-900">
+          <h1 className="text-4xl font-extrabold text-foreground">
             {trip.title}
           </h1>
 
-          <div className="flex items-center text-gray-500 mt-2">
+          <div className="flex items-center text-muted-foreground mt-2">
             <Calendar className="h-5 w-5 mr-2" />
             <span className="text-lg">
               {" "}
@@ -60,7 +60,7 @@ export default function TripDetailClient({ trip }: TripDetailClientProps) {
         </div>
       </div>
 
-      <div className="bg-white p-6 shadow rounded-lg">
+      <div className="bg-card p-6 shadow rounded-lg border border-border">
         <Tabs value={activeTab} onValueChange={setActiveTab}>
           <TabsList className="mb-6">
             <TabsTrigger value="overview" className="text-lg">
@@ -80,10 +80,10 @@ export default function TripDetailClient({ trip }: TripDetailClientProps) {
                 <h2 className="text-2xl font-semibold mb-4">Trip summary</h2>
                 <div className="space-y-4">
                   <div className="flex items-start">
-                    <Calendar className="h-6 w-6 mr-6 text-gray-500" />
+                    <Calendar className="h-6 w-6 mr-6 text-muted-foreground" />
                     <div>
-                      <p className="font-medium text-gray-700">Dates</p>
-                      <p className="text-sm text-gray-500">
+                      <p className="font-medium text-foreground">Dates</p>
+                      <p className="text-sm text-muted-foreground">
                         {trip.startDate.toLocaleDateString()} -{" "}
                         {trip.endDate.toLocaleDateString()} <br />
                         {`${Math.round(
@@ -95,7 +95,7 @@ export default function TripDetailClient({ trip }: TripDetailClientProps) {
                   </div>
 
                   <div className="flex items-start">
-                    <MapPin className="h-6 w-6 mr-3 text-gray-500" />
+                    <MapPin className="h-6 w-6 mr-3 text-muted-foreground" />
                     <div>
                       <p>Destinations</p>
                       <p>
@@ -121,7 +121,7 @@ export default function TripDetailClient({ trip }: TripDetailClientProps) {
               )}
 
               <div>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-muted-foreground leading-relaxed">
                   {trip.description}
                 </p>
               </div>

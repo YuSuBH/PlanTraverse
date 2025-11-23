@@ -23,14 +23,14 @@ export default async function TripsPage() {
 
   if (!session) {
     return (
-      <div className="flex justify-center items-center h-screen text-gray-700 text-xl">
+      <div className="flex justify-center items-center h-screen text-muted-foreground text-xl">
         Please sign in.
       </div>
     );
   }
 
   return (
-    <div className="space-y-6 container mx-auto px-4 py-8">
+    <div className="space-y-6 container mx-auto px-4 py-8 bg-background min-h-screen">
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-bold tracking-tight"> Dashboard</h1>
         <Link href="/trips/new">
@@ -44,7 +44,7 @@ export default async function TripsPage() {
         </CardHeader>
 
         <CardContent>
-          <p>
+          <p className="text-muted-foreground">
             {" "}
             {trips.length === 0
               ? "Start planning your first trip."
@@ -60,12 +60,14 @@ export default async function TripsPage() {
       </Card>
 
       <div>
-        <h2 className="text-xl font-semibold mb-4">Your recent trips</h2>
+        <h2 className="text-xl font-semibold mb-4 tracking-tight">
+          Your recent trips
+        </h2>
         {trips.length === 0 ? (
           <Card>
             <CardContent className="flex flex-col items-center justify-center py-8">
               <h3 className="text-xl font-medium mb-2">No trips yet.</h3>
-              <p className="text-center mb-4 max-w-md">
+              <p className="text-center mb-4 max-w-md text-muted-foreground">
                 Start planning your adventure by creating your first trip.
               </p>
               <Link href="/trips/new">
@@ -77,14 +79,14 @@ export default async function TripsPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {sortedTrips.slice(0, 6).map((trip, key) => (
               <Link key={key} href={`/trips/${trip.id}`}>
-                <Card className="h-full hover:shadow-md transition-shadow">
+                <Card className="h-full hover:shadow-md transition-shadow hover:border-primary/50">
                   <CardHeader className="line-clamp-1">{trip.title}</CardHeader>
 
                   <CardContent>
-                    <p className="text-sm line-clamp-2 mb-2">
+                    <p className="text-sm line-clamp-2 mb-2 text-muted-foreground">
                       {trip.description}
                     </p>
-                    <div className="text-sm">
+                    <div className="text-sm text-muted-foreground/80">
                       {new Date(trip.startDate).toLocaleDateString()} -{" "}
                       {new Date(trip.startDate).toLocaleDateString()}
                     </div>

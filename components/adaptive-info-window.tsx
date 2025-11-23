@@ -115,7 +115,7 @@ export function AdaptiveInfoWindow({
     >
       <div
         ref={wrapperRef}
-        className={`absolute bg-white rounded-md shadow-xl p-0 z-50 w-[260px] cursor-default
+        className={`absolute bg-card text-card-foreground rounded-md shadow-xl p-0 z-50 w-[260px] cursor-default border border-border
           ${position === "top" ? "bottom-full mb-3" : "top-full mt-3"}
           left-1/2
           transition-opacity duration-200 ${
@@ -134,7 +134,7 @@ export function AdaptiveInfoWindow({
             e.stopPropagation();
             onClose();
           }}
-          className="absolute top-2 right-2 p-1 rounded-full hover:bg-gray-100 z-10 text-gray-500"
+          className="absolute top-2 right-2 p-1 rounded-full hover:bg-accent hover:text-accent-foreground z-10 text-muted-foreground"
         >
           <X size={16} />
         </button>
@@ -150,10 +150,10 @@ export function AdaptiveInfoWindow({
             />
           )}
           <h3 className="font-semibold text-base mb-1">{experience.title}</h3>
-          <p className="text-sm text-gray-600 mb-1">
+          <p className="text-sm text-muted-foreground mb-1">
             {experience.locationName}
           </p>
-          <p className="text-xs text-gray-500 mb-2 line-clamp-2">
+          <p className="text-xs text-muted-foreground/80 mb-2 line-clamp-2">
             {experience.description}
           </p>
           <div className="flex items-center gap-2 mb-2">
@@ -166,13 +166,13 @@ export function AdaptiveInfoWindow({
                 className="rounded-full"
               />
             )}
-            <span className="text-xs text-gray-600">
+            <span className="text-xs text-muted-foreground">
               {experience.user.name || "Anonymous"}
             </span>
           </div>
           <Link
             href={`/experiences/${experience.id}`}
-            className="text-blue-600 hover:text-blue-800 text-sm font-medium"
+            className="text-primary hover:underline text-sm font-medium"
           >
             View Details →
           </Link>
@@ -183,8 +183,8 @@ export function AdaptiveInfoWindow({
           className={`absolute left-1/2 -translate-x-1/2 w-0 h-0 border-8 border-transparent
           ${
             position === "top"
-              ? "bottom-[-16px] border-t-white"
-              : "top-[-16px] border-b-white"
+              ? "bottom-[-16px] border-t-card"
+              : "top-[-16px] border-b-card"
           }
         `}
           style={{

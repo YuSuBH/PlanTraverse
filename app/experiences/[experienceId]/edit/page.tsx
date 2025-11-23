@@ -35,7 +35,7 @@ export default async function EditExperiencePage({
   if (experience.userId !== session.user?.id) {
     return (
       <div className="container mx-auto px-4 py-8">
-        <div className="text-center text-red-600">
+        <div className="text-center text-destructive">
           You don`&apos`t have permission to edit this experience.
         </div>
       </div>

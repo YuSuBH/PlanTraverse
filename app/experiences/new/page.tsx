@@ -71,7 +71,7 @@ export default function NewExperience() {
             }}
           >
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-foreground mb-1">
                 Title
               </label>
               <input
@@ -79,15 +79,15 @@ export default function NewExperience() {
                 name="title"
                 placeholder="My amazing trip to..."
                 className={cn(
-                  "w-full border border-gray-300 px-3 py-2",
-                  "rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  "w-full border border-input bg-background px-3 py-2",
+                  "rounded-md focus:outline-none focus:ring-2 focus:ring-ring"
                 )}
                 required
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-foreground mb-1">
                 Description
               </label>
               <textarea
@@ -95,15 +95,15 @@ export default function NewExperience() {
                 placeholder="Share your experience..."
                 rows={6}
                 className={cn(
-                  "w-full border border-gray-300 px-3 py-2",
-                  "rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  "w-full border border-input bg-background px-3 py-2",
+                  "rounded-md focus:outline-none focus:ring-2 focus:ring-ring"
                 )}
                 required
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-foreground mb-1">
                 Location Name
               </label>
               <input
@@ -113,16 +113,16 @@ export default function NewExperience() {
                 value={locationNameInput}
                 onChange={(e) => setLocationNameInput(e.target.value)}
                 className={cn(
-                  "w-full border border-gray-300 px-3 py-2",
-                  "rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  "w-full border border-input bg-background px-3 py-2",
+                  "rounded-md focus:outline-none focus:ring-2 focus:ring-ring"
                 )}
                 required
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Select Location <span className="text-red-500">*</span>
+              <label className="block text-sm font-medium text-foreground mb-2">
+                Select Location <span className="text-destructive">*</span>
               </label>
               <LocationPicker
                 onLocationSelect={handleLocationSelect}
@@ -133,12 +133,12 @@ export default function NewExperience() {
                 }
               />
               {!location && (
-                <p className="text-sm text-amber-600 mt-2">
+                <p className="text-sm text-yellow-600 mt-2">
                   ⚠️ Please select a location using the map or search above
                 </p>
               )}
               {location?.address && (
-                <p className="text-sm text-gray-600 mt-2">
+                <p className="text-sm text-muted-foreground mt-2">
                   <strong>Address:</strong> {location.address}
                 </p>
               )}
@@ -148,7 +148,7 @@ export default function NewExperience() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-foreground mb-2">
                 Images
               </label>
               <UploadButton
@@ -181,7 +181,7 @@ export default function NewExperience() {
                         onClick={() =>
                           setImageUrls(imageUrls.filter((_, i) => i !== idx))
                         }
-                        className="absolute top-1 right-1 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs"
+                        className="absolute top-1 right-1 bg-destructive text-destructive-foreground rounded-full w-6 h-6 flex items-center justify-center text-xs"
                       >
                         ×
                       </button>

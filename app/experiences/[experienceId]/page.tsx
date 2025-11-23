@@ -45,7 +45,7 @@ export default async function ExperienceDetailPage({
       <Card>
         <CardHeader>
           <CardTitle className="text-3xl">{experience.title}</CardTitle>
-          <div className="flex items-center gap-4 text-sm text-gray-600 mt-2">
+          <div className="flex items-center gap-4 text-sm text-muted-foreground mt-2">
             <div className="flex items-center gap-1">
               <User className="w-4 h-4" />
               <span>{experience.user.name || "Anonymous"}</span>
@@ -84,7 +84,7 @@ export default async function ExperienceDetailPage({
             <h3 className="text-xl font-semibold mb-2">
               About this experience
             </h3>
-            <p className="text-gray-700 whitespace-pre-wrap">
+            <p className="text-foreground whitespace-pre-wrap">
               {experience.description}
             </p>
           </div>
@@ -92,11 +92,13 @@ export default async function ExperienceDetailPage({
           {/* Location Details */}
           <div>
             <h3 className="text-xl font-semibold mb-2">Location</h3>
-            <p className="text-gray-700 mb-2">{experience.locationName}</p>
+            <p className="text-foreground mb-2">{experience.locationName}</p>
             {experience.address && (
-              <p className="text-sm text-gray-600 mb-2">{experience.address}</p>
+              <p className="text-sm text-muted-foreground mb-2">
+                {experience.address}
+              </p>
             )}
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-muted-foreground/80">
               Coordinates: {experience.lat.toFixed(6)},{" "}
               {experience.lng.toFixed(6)}
             </p>

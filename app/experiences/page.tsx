@@ -23,11 +23,13 @@ export default async function ExperiencesPage() {
   });
 
   return (
-    <div className="h-[calc(100vh-80px)] flex flex-col">
+    <div className="h-[calc(100vh-80px)] flex flex-col bg-background">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <div>
-          <h1 className="text-3xl font-bold">Travel Experiences</h1>
-          <p className="text-gray-600">
+          <h1 className="text-3xl font-bold tracking-tight">
+            Travel Experiences
+          </h1>
+          <p className="text-muted-foreground">
             Explore shared travel experiences from around the world
           </p>
         </div>

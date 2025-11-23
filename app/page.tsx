@@ -3,7 +3,8 @@ import { Map as MapIcon, Globe, Calendar, Share2 } from "lucide-react";
 import { auth } from "@/auth";
 import Link from "next/link";
 import AuthButton from "@/components/auth-button";
-// Now first analyze the entire codebase and understand the ui implementation and overhaul the entire website ui. Keep the minimilast design with black and white theme and add any complementing colors if needed. Maintain consistant ui design across site.
+
+//globe country visited
 
 export default async function LandingPage() {
   const session = await auth();
@@ -14,14 +15,14 @@ export default async function LandingPage() {
       {/* Main Content */}
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative bg-gradient-to-b from-white to-gray-50 py-20 md:py-32">
+        <section className="relative bg-background py-20 md:py-32 border-b border-border">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
-              <h1 className="text-4xl md:text-6xl font-bold mb-6">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
                 Plan Your Journey & <br className="hidden md:block" />
-                <span className="text-gray-900">Share Your World</span>
+                <span className="text-muted-foreground">Share Your World</span>
               </h1>
-              <p className="text-xl md:text-2xl text-gray-600 mb-8">
+              <p className="text-xl md:text-2xl text-muted-foreground mb-8 font-light">
                 Seamlessly organize your trips with detailed itineraries, or
                 discover and share amazing travel experiences on our interactive
                 globe.
@@ -29,14 +30,14 @@ export default async function LandingPage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <AuthButton
                   isLoggedIn={isLoggedIn}
-                  className="w-full sm:w-auto bg-black text-white hover:bg-gray-800 px-6 py-3 rounded-lg transition-colors duration-200 flex items-center justify-center"
+                  className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-4 rounded-md transition-all duration-200 flex items-center justify-center text-lg font-medium"
                 >
                   {isLoggedIn ? (
                     "Go to Planner"
                   ) : (
                     <>
                       <svg
-                        className="w-6 h-6"
+                        className="w-5 h-5"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
                         fill="currentColor"
@@ -49,7 +50,7 @@ export default async function LandingPage() {
                 </AuthButton>
                 <Link
                   href="/experiences"
-                  className="w-full sm:w-auto bg-white text-gray-800 border border-gray-200 hover:bg-gray-50 px-6 py-3 rounded-lg transition-colors duration-200 flex items-center justify-center font-medium"
+                  className="w-full sm:w-auto bg-background text-foreground border border-input hover:bg-accent hover:text-accent-foreground px-8 py-4 rounded-md transition-all duration-200 flex items-center justify-center font-medium text-lg"
                 >
                   <Globe className="w-5 h-5 mr-2" />
                   Explore Map
@@ -57,86 +58,83 @@ export default async function LandingPage() {
               </div>
             </div>
           </div>
-          {/* Decorative Clipped Background at the Bottom */}
-          <div
-            className="absolute bottom-0 left-0 right-0 h-24 bg-white"
-            style={{ clipPath: "polygon(0 100%, 100% 100%, 100% 0, 0 100%)" }}
-          />
         </section>
 
         {/* Feature Section 1: Trip Planning */}
-        <section className="py-16 md:py-24 bg-white">
+        <section className="py-16 md:py-24 bg-background">
           <div className="container mx-auto px-4">
             <div className="flex flex-col md:flex-row items-center gap-12">
               <div className="flex-1">
-                <h2 className="text-3xl font-bold mb-6">Smart Trip Planning</h2>
-                <p className="text-lg text-gray-600 mb-8">
+                <h2 className="text-3xl font-bold mb-6 tracking-tight">
+                  Smart Trip Planning
+                </h2>
+                <p className="text-lg text-muted-foreground mb-8">
                   Build detailed day-by-day itineraries, organize destinations,
                   and manage your travel logistics in one intuitive interface.
                 </p>
                 <div className="grid gap-6">
                   <div className="flex gap-4">
-                    <div className="bg-gray-100 p-3 rounded-full h-fit">
-                      <Calendar className="w-6 h-6 text-gray-900" />
+                    <div className="bg-secondary p-3 rounded-md h-fit">
+                      <Calendar className="w-6 h-6 text-foreground" />
                     </div>
                     <div>
                       <h3 className="font-semibold">Day-by-Day Itineraries</h3>
-                      <p className="text-gray-600">
+                      <p className="text-muted-foreground">
                         Structure your trip perfectly.
                       </p>
                     </div>
                   </div>
                   <div className="flex gap-4">
-                    <div className="bg-gray-100 p-3 rounded-full h-fit">
-                      <MapIcon className="w-6 h-6 text-gray-900" />
+                    <div className="bg-secondary p-3 rounded-md h-fit">
+                      <MapIcon className="w-6 h-6 text-foreground" />
                     </div>
                     <div>
                       <h3 className="font-semibold">Interactive Maps</h3>
-                      <p className="text-gray-600">
+                      <p className="text-muted-foreground">
                         Visualize your route clearly.
                       </p>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="flex-1 bg-gray-100 rounded-2xl h-80 flex items-center justify-center">
-                <MapIcon className="w-24 h-24 text-gray-300" />
+              <div className="flex-1 bg-secondary rounded-xl h-80 flex items-center justify-center border border-border">
+                <MapIcon className="w-24 h-24 text-muted-foreground/50" />
               </div>
             </div>
           </div>
         </section>
 
         {/* Feature Section 2: Experience Map */}
-        <section className="py-16 md:py-24 bg-gray-50">
+        <section className="py-16 md:py-24 bg-background border-t border-border">
           <div className="container mx-auto px-4">
             <div className="flex flex-col md:flex-row-reverse items-center gap-12">
               <div className="flex-1">
-                <h2 className="text-3xl font-bold mb-6">
+                <h2 className="text-3xl font-bold mb-6 tracking-tight">
                   Interactive Experience Map
                 </h2>
-                <p className="text-lg text-gray-600 mb-8">
+                <p className="text-lg text-muted-foreground mb-8">
                   Explore a global map filled with travel experiences. Pin your
                   own memories, upload photos, and inspire others.
                 </p>
                 <div className="grid gap-6">
                   <div className="flex gap-4">
-                    <div className="bg-gray-100 p-3 rounded-full h-fit">
-                      <Globe className="w-6 h-6 text-gray-900" />
+                    <div className="bg-secondary p-3 rounded-md h-fit">
+                      <Globe className="w-6 h-6 text-foreground" />
                     </div>
                     <div>
                       <h3 className="font-semibold">Global Discovery</h3>
-                      <p className="text-gray-600">
+                      <p className="text-muted-foreground">
                         Find hidden gems around the world.
                       </p>
                     </div>
                   </div>
                   <div className="flex gap-4">
-                    <div className="bg-gray-100 p-3 rounded-full h-fit">
-                      <Share2 className="w-6 h-6 text-gray-900" />
+                    <div className="bg-secondary p-3 rounded-md h-fit">
+                      <Share2 className="w-6 h-6 text-foreground" />
                     </div>
                     <div>
                       <h3 className="font-semibold">Share Memories</h3>
-                      <p className="text-gray-600">
+                      <p className="text-muted-foreground">
                         Post your travel highlights.
                       </p>
                     </div>
@@ -145,32 +143,32 @@ export default async function LandingPage() {
                 <div className="mt-8">
                   <Link
                     href="/experiences"
-                    className="text-gray-900 font-medium hover:underline"
+                    className="text-foreground font-medium hover:underline underline-offset-4"
                   >
                     Explore Experiences &rarr;
                   </Link>
                 </div>
               </div>
-              <div className="flex-1 bg-gray-200 rounded-2xl h-80 flex items-center justify-center">
-                <Globe className="w-24 h-24 text-gray-300" />
+              <div className="flex-1 bg-secondary rounded-xl h-80 flex items-center justify-center border border-border">
+                <Globe className="w-24 h-24 text-muted-foreground/50" />
               </div>
             </div>
           </div>
         </section>
 
         {/* Call to Action Section */}
-        <section className="py-16 md:py-24 bg-gray-900">
+        <section className="py-16 md:py-24 bg-primary text-primary-foreground">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight">
               Ready to plan your next adventure?
             </h2>
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
               Join thousands of travelers who plan better trips with
               PlanTraverse.
             </p>
             <AuthButton
               isLoggedIn={isLoggedIn}
-              className="inline-block bg-white text-gray-900 hover:bg-gray-100 px-6 py-3 rounded-lg transition-colors duration-200"
+              className="inline-block bg-background text-foreground hover:bg-background/90 px-8 py-4 rounded-md transition-all duration-200 font-medium"
             >
               {isLoggedIn ? "Check it out" : "Sign Up Now"}
             </AuthButton>

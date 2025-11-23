@@ -153,8 +153,8 @@ export default function LocationPicker({
             type="text"
             placeholder="Search for a place (e.g., Eiffel Tower, Paris)"
             className={cn(
-              "w-full border border-gray-300 px-3 py-2",
-              "rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              "w-full border border-input bg-background px-3 py-2",
+              "rounded-md focus:outline-none focus:ring-2 focus:ring-ring"
             )}
           />
         </Autocomplete>
@@ -167,7 +167,7 @@ export default function LocationPicker({
         </Button>
       </div>
 
-      <div className="border rounded-md overflow-hidden">
+      <div className="border border-border rounded-md overflow-hidden">
         <GoogleMap
           mapContainerStyle={{ width: "100%", height: "400px" }}
           zoom={mapZoom}
@@ -188,13 +188,13 @@ export default function LocationPicker({
         </GoogleMap>
       </div>
 
-      <p className="text-sm text-gray-600">
+      <p className="text-sm text-muted-foreground">
         💡 <strong>Tip:</strong> Search for a place, use your current location,
         or click anywhere on the map to select coordinates.
       </p>
 
       {selectedPosition && (
-        <div className="text-sm text-gray-600 bg-gray-50 p-3 rounded-md">
+        <div className="text-sm text-muted-foreground bg-muted p-3 rounded-md">
           <strong>Selected coordinates:</strong>{" "}
           {selectedPosition.lat.toFixed(6)}, {selectedPosition.lng.toFixed(6)}
         </div>

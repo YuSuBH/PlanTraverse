@@ -19,31 +19,31 @@ export default function Navbar({ session }: { session: Session | null }) {
             <>
               <Link
                 href={"/trips"}
-                className="text-slate-900 hover:text-sky-500"
+                className="text-sm font-medium text-foreground hover:text-foreground/70 transition-colors"
               >
                 My Trips
               </Link>
               <Link
                 href={"/experiences"}
-                className="text-slate-900 hover:text-sky-500"
+                className="text-sm font-medium text-foreground hover:text-foreground/70 transition-colors"
               >
                 Experiences
               </Link>
               <Link
                 href={"/experiences/my"}
-                className="text-slate-900 hover:text-sky-500"
+                className="text-sm font-medium text-foreground hover:text-foreground/70 transition-colors"
               >
                 My Experiences
               </Link>
               <Link
                 href={"/globe"}
-                className="text-slate-900 hover:text-sky-500"
+                className="text-sm font-medium text-foreground hover:text-foreground/70 transition-colors"
               >
                 Globe
               </Link>
 
               <button
-                className="flex items-center justify-center bg-gray-800 hover:bg-gray-900 text-white p-2 rounded-sm cursor-pointer"
+                className="flex items-center justify-center bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer"
                 onClick={logout}
               >
                 Sign Out
@@ -53,17 +53,17 @@ export default function Navbar({ session }: { session: Session | null }) {
             <>
               <Link
                 href={"/experiences"}
-                className="text-slate-900 hover:text-sky-500"
+                className="text-sm font-medium text-foreground hover:text-foreground/70 transition-colors"
               >
                 Experiences
               </Link>
               <button
-                className="flex items-center justify-center bg-gray-800 hover:bg-gray-900 text-white p-2 rounded-sm cursor-pointer"
+                className="flex items-center justify-center bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer"
                 onClick={login}
               >
                 Sign In
                 <svg
-                  className="w-6 h-6 ml-2"
+                  className="w-4 h-4 ml-2"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="currentColor"

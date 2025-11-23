@@ -12,7 +12,7 @@ export default async function MyExperiencesPage() {
 
   if (!session) {
     return (
-      <div className="flex justify-center items-center h-screen text-gray-700 text-xl">
+      <div className="flex justify-center items-center h-screen text-muted-foreground text-xl">
         Please sign in to manage your experiences.
       </div>
     );
@@ -29,7 +29,7 @@ export default async function MyExperiencesPage() {
   });
 
   return (
-    <div className="space-y-6 container mx-auto px-4 py-8">
+    <div className="space-y-6 container mx-auto px-4 py-8 bg-background min-h-screen">
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-bold tracking-tight">My Experiences</h1>
         <Link href="/experiences/new">
@@ -42,7 +42,7 @@ export default async function MyExperiencesPage() {
           <CardTitle>Manage Your Travel Experiences</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-gray-600">
+          <p className="text-muted-foreground">
             {experiences.length === 0
               ? "You haven't shared any experiences yet. Start by sharing your first travel memory!"
               : `You have shared ${experiences.length} ${
@@ -53,12 +53,14 @@ export default async function MyExperiencesPage() {
       </Card>
 
       <div>
-        <h2 className="text-xl font-semibold mb-4">Your Experiences</h2>
+        <h2 className="text-xl font-semibold mb-4 tracking-tight">
+          Your Experiences
+        </h2>
         {experiences.length === 0 ? (
           <Card>
             <CardContent className="flex flex-col items-center justify-center py-8">
               <h3 className="text-xl font-medium mb-2">No experiences yet.</h3>
-              <p className="text-center mb-4 max-w-md text-gray-600">
+              <p className="text-center mb-4 max-w-md text-muted-foreground">
                 Share your travel experiences with the world. Add photos,
                 locations, and stories from your adventures!
               </p>
@@ -72,7 +74,7 @@ export default async function MyExperiencesPage() {
             {experiences.map((experience) => (
               <Card
                 key={experience.id}
-                className="h-full hover:shadow-md transition-shadow"
+                className="h-full hover:shadow-md transition-shadow hover:border-primary/50"
               >
                 {experience.images.length > 0 && (
                   <div className="relative w-full h-48">
@@ -88,15 +90,15 @@ export default async function MyExperiencesPage() {
                   <CardTitle className="text-lg line-clamp-1">
                     {experience.title}
                   </CardTitle>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-muted-foreground">
                     {experience.locationName}
                   </p>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <p className="text-sm text-gray-700 line-clamp-2">
+                  <p className="text-sm text-muted-foreground line-clamp-2">
                     {experience.description}
                   </p>
-                  <div className="text-xs text-gray-500">
+                  <div className="text-xs text-muted-foreground/80">
                     Shared on{" "}
                     {new Date(experience.createdAt).toLocaleDateString()}
                   </div>
