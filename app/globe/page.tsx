@@ -55,21 +55,22 @@ export default function GlobePage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-center text-4xl font-bold mb-12 tracking-tight">
-            Your travel journey
-          </h1>
+          <div className="text-center mb-12 space-y-4">
+            <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">
+              Your Travel Journey
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Visualize your adventures across the globe and track the countries
+              you've explored.
+            </p>
+          </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-            <div className="lg:col-span-2 bg-card ronded-xl shadow-lg overflow-hidden border border-border">
-              <div className="p-6">
-                <h2 className="text-2xl font-semibold mb-4">
-                  {" "}
-                  See where you have been...
-                </h2>
-
-                <div className="h-[600px] w-full relative">
+            <div className="lg:col-span-2 bg-card rounded-2xl shadow-sm overflow-hidden border border-border">
+              <div className="p-1">
+                <div className="h-[600px] w-full relative rounded-xl overflow-hidden bg-black/5">
                   {isLoading ? (
                     <div className="flex items-center justify-center h-full">
                       <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
@@ -95,39 +96,46 @@ export default function GlobePage() {
             </div>
 
             <div className="lg:col-span-1">
-              <Card className="sticky top-8">
-                <CardHeader>
-                  <CardTitle>Countries Visited</CardTitle>
+              <Card className="sticky top-24 border-border shadow-sm">
+                <CardHeader className="pb-4">
+                  <CardTitle className="text-2xl">Countries Visited</CardTitle>
                 </CardHeader>
                 <CardContent>
                   {isLoading ? (
-                    <div className="flex items-center justify-center h-full">
-                      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+                    <div className="flex items-center justify-center py-12">
+                      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
                     </div>
                   ) : (
-                    <div className="space-y-4">
-                      <div className="bg-muted p-4 rounded-lg">
-                        <p className="text-sm text-foreground">
-                          You have visited{" "}
-                          <span className="font-bold">
-                            {visitedCountries.size}
-                          </span>{" "}
-                          countries.
+                    <div className="space-y-6">
+                      <div className="bg-secondary/50 p-6 rounded-xl text-center">
+                        <span className="text-5xl font-bold text-primary block mb-2">
+                          {visitedCountries.size}
+                        </span>
+                        <p className="text-muted-foreground font-medium">
+                          Countries Explored
                         </p>
                       </div>
 
-                      <div className="space-y-2 max-h-[500px] overflow-y-auto pr-2">
-                        {Array.from(visitedCountries)
-                          .sort()
-                          .map((country, key) => (
-                            <div
-                              key={key}
-                              className="flex items-center gap-2 p-3 rounded-lg hover:bg-muted transition-colors border border-border"
-                            >
-                              <MapPin className="h-4 w-4 text-primary" />
-                              <span className="font-medium">{country}</span>
-                            </div>
-                          ))}
+                      <div className="space-y-2 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
+                        {Array.from(visitedCountries).length === 0 ? (
+                          <p className="text-center text-muted-foreground py-8">
+                            No countries visited yet.
+                          </p>
+                        ) : (
+                          Array.from(visitedCountries)
+                            .sort()
+                            .map((country, key) => (
+                              <div
+                                key={key}
+                                className="flex items-center gap-3 p-3 rounded-lg hover:bg-secondary/50 transition-colors border border-transparent hover:border-border"
+                              >
+                                <div className="bg-primary/10 p-2 rounded-full">
+                                  <MapPin className="h-4 w-4 text-primary" />
+                                </div>
+                                <span className="font-medium">{country}</span>
+                              </div>
+                            ))
+                        )}
                       </div>
                     </div>
                   )}

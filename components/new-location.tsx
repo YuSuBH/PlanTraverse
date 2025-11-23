@@ -33,19 +33,26 @@ export default function NewLocationClient({ tripId }: { tripId: string }) {
   };
 
   return (
-    <div className="max-w-2xl mx-auto mt-10 px-4">
-      <Card>
-        <CardHeader className="flex flex-row items-center justify-between">
-          <div>Add New Location to Itinerary</div>
+    <div className="max-w-3xl mx-auto py-12 px-4 sm:px-6">
+      <div className="mb-8 text-center">
+        <h1 className="text-3xl font-bold tracking-tight">Add New Location</h1>
+        <p className="text-muted-foreground mt-2">
+          Add a new stop to your trip itinerary.
+        </p>
+      </div>
+
+      <Card className="border-border shadow-sm">
+        <CardHeader className="flex flex-row items-center justify-between border-b border-border pb-6">
+          <div className="font-semibold text-lg">Location Details</div>
           <Link href={`/trips/${tripId}`}>
             <Button variant="outline" size="sm">
               Back to Trip
             </Button>
           </Link>
         </CardHeader>
-        <CardContent>
+        <CardContent className="p-6 md:p-8">
           <form
-            className="space-y-6"
+            className="space-y-8"
             onSubmit={(e) => {
               e.preventDefault();
 
@@ -70,43 +77,48 @@ export default function NewLocationClient({ tripId }: { tripId: string }) {
               });
             }}
           >
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Location Name
-              </label>
-              <input
-                type="text"
-                name="locationName"
-                placeholder="e.g., Eiffel Tower, Paris"
-                value={locationNameInput}
-                onChange={(e) => setLocationNameInput(e.target.value)}
-                className={cn(
-                  "w-full border border-gray-300 px-3 py-2",
-                  "rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                )}
-                required
-              />
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  Location Name
+                </label>
+                <input
+                  type="text"
+                  name="locationName"
+                  placeholder="e.g., Eiffel Tower, Paris"
+                  value={locationNameInput}
+                  onChange={(e) => setLocationNameInput(e.target.value)}
+                  className={cn(
+                    "w-full border border-input bg-background px-4 py-3",
+                    "rounded-md focus:outline-none focus:ring-2 focus:ring-ring transition-all"
+                  )}
+                  required
+                />
+              </div>
             </div>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Select Location <span className="text-red-500">*</span>
+            <div className="space-y-4 pt-4 border-t border-border">
+              <label className="block text-lg font-semibold text-foreground">
+                Select Location{" "}
+                <span className="text-destructive text-sm align-top">*</span>
               </label>
-              <LocationPicker
-                onLocationSelect={handleLocationSelect}
-                initialLocation={
-                  location
-                    ? { lat: location.lat, lng: location.lng }
-                    : undefined
-                }
-              />
+              <div className="bg-secondary/20 p-1 rounded-xl border border-border">
+                <LocationPicker
+                  onLocationSelect={handleLocationSelect}
+                  initialLocation={
+                    location
+                      ? { lat: location.lat, lng: location.lng }
+                      : undefined
+                  }
+                />
+              </div>
               {!location && (
-                <p className="text-sm text-amber-600 mt-2">
+                <p className="text-sm text-yellow-600 flex items-center gap-2">
                   ⚠️ Please select a location using the map or search above
                 </p>
               )}
               {location?.address && (
-                <p className="text-sm text-gray-600 mt-2">
+                <p className="text-sm text-muted-foreground bg-secondary/50 p-3 rounded-md border border-border/50">
                   <strong>Address:</strong> {location.address}
                 </p>
               )}
@@ -115,9 +127,16 @@ export default function NewLocationClient({ tripId }: { tripId: string }) {
               <input type="hidden" name="lng" value={location?.lng || ""} />
             </div>
 
-            <Button type="submit" disabled={isPending} className="w-full">
-              {isPending ? "Adding..." : "Add Location"}
-            </Button>
+            <div className="pt-6">
+              <Button
+                type="submit"
+                disabled={isPending}
+                size="lg"
+                className="w-full text-lg h-12"
+              >
+                {isPending ? "Adding Location..." : "Add Location"}
+              </Button>
+            </div>
           </form>
         </CardContent>
       </Card>

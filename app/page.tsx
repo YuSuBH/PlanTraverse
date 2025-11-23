@@ -15,22 +15,22 @@ export default async function LandingPage() {
       {/* Main Content */}
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative bg-background py-20 md:py-32 border-b border-border">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto text-center">
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+        <section className="relative bg-background py-32 md:py-48 border-b border-border">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto text-center space-y-8">
+              <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-foreground">
                 Plan Your Journey & <br className="hidden md:block" />
                 <span className="text-muted-foreground">Share Your World</span>
               </h1>
-              <p className="text-xl md:text-2xl text-muted-foreground mb-8 font-light">
+              <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto font-light leading-relaxed">
                 Seamlessly organize your trips with detailed itineraries, or
                 discover and share amazing travel experiences on our interactive
                 globe.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-6 justify-center pt-8">
                 <AuthButton
                   isLoggedIn={isLoggedIn}
-                  className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-4 rounded-md transition-all duration-200 flex items-center justify-center text-lg font-medium"
+                  className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 rounded-md transition-all duration-200 flex items-center justify-center text-lg font-medium h-14"
                 >
                   {isLoggedIn ? (
                     "Go to Planner"
@@ -50,7 +50,7 @@ export default async function LandingPage() {
                 </AuthButton>
                 <Link
                   href="/experiences"
-                  className="w-full sm:w-auto bg-background text-foreground border border-input hover:bg-accent hover:text-accent-foreground px-8 py-4 rounded-md transition-all duration-200 flex items-center justify-center font-medium text-lg"
+                  className="w-full sm:w-auto bg-background text-foreground border border-input hover:bg-accent hover:text-accent-foreground px-8 py-6 rounded-md transition-all duration-200 flex items-center justify-center font-medium text-lg h-14"
                 >
                   <Globe className="w-5 h-5 mr-2" />
                   Explore Map
@@ -61,117 +61,133 @@ export default async function LandingPage() {
         </section>
 
         {/* Feature Section 1: Trip Planning */}
-        <section className="py-16 md:py-24 bg-background">
-          <div className="container mx-auto px-4">
-            <div className="flex flex-col md:flex-row items-center gap-12">
-              <div className="flex-1">
-                <h2 className="text-3xl font-bold mb-6 tracking-tight">
+        <section className="py-24 md:py-32 bg-background">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col md:flex-row items-center gap-16 lg:gap-24">
+              <div className="flex-1 space-y-8">
+                <h2 className="text-4xl font-bold tracking-tight">
                   Smart Trip Planning
                 </h2>
-                <p className="text-lg text-muted-foreground mb-8">
+                <p className="text-xl text-muted-foreground leading-relaxed">
                   Build detailed day-by-day itineraries, organize destinations,
                   and manage your travel logistics in one intuitive interface.
                 </p>
-                <div className="grid gap-6">
-                  <div className="flex gap-4">
-                    <div className="bg-secondary p-3 rounded-md h-fit">
-                      <Calendar className="w-6 h-6 text-foreground" />
+                <div className="grid gap-8 pt-4">
+                  <div className="flex gap-6">
+                    <div className="bg-secondary p-4 rounded-lg h-fit">
+                      <Calendar className="w-8 h-8 text-foreground" />
                     </div>
                     <div>
-                      <h3 className="font-semibold">Day-by-Day Itineraries</h3>
-                      <p className="text-muted-foreground">
-                        Structure your trip perfectly.
+                      <h3 className="text-xl font-semibold mb-2">
+                        Day-by-Day Itineraries
+                      </h3>
+                      <p className="text-muted-foreground leading-relaxed">
+                        Structure your trip perfectly with easy-to-use
+                        scheduling tools.
                       </p>
                     </div>
                   </div>
-                  <div className="flex gap-4">
-                    <div className="bg-secondary p-3 rounded-md h-fit">
-                      <MapIcon className="w-6 h-6 text-foreground" />
+                  <div className="flex gap-6">
+                    <div className="bg-secondary p-4 rounded-lg h-fit">
+                      <MapIcon className="w-8 h-8 text-foreground" />
                     </div>
                     <div>
-                      <h3 className="font-semibold">Interactive Maps</h3>
-                      <p className="text-muted-foreground">
-                        Visualize your route clearly.
+                      <h3 className="text-xl font-semibold mb-2">
+                        Interactive Maps
+                      </h3>
+                      <p className="text-muted-foreground leading-relaxed">
+                        Visualize your route clearly and optimize your travel
+                        path.
                       </p>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="flex-1 bg-secondary rounded-xl h-80 flex items-center justify-center border border-border">
-                <MapIcon className="w-24 h-24 text-muted-foreground/50" />
+              <div className="flex-1 bg-secondary rounded-2xl h-[500px] w-full flex items-center justify-center border border-border/50 shadow-sm">
+                <MapIcon className="w-32 h-32 text-muted-foreground/30" />
               </div>
             </div>
           </div>
         </section>
 
         {/* Feature Section 2: Experience Map */}
-        <section className="py-16 md:py-24 bg-background border-t border-border">
-          <div className="container mx-auto px-4">
-            <div className="flex flex-col md:flex-row-reverse items-center gap-12">
-              <div className="flex-1">
-                <h2 className="text-3xl font-bold mb-6 tracking-tight">
+        <section className="py-24 md:py-32 bg-background border-t border-border">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col md:flex-row-reverse items-center gap-16 lg:gap-24">
+              <div className="flex-1 space-y-8">
+                <h2 className="text-4xl font-bold tracking-tight">
                   Interactive Experience Map
                 </h2>
-                <p className="text-lg text-muted-foreground mb-8">
+                <p className="text-xl text-muted-foreground leading-relaxed">
                   Explore a global map filled with travel experiences. Pin your
                   own memories, upload photos, and inspire others.
                 </p>
-                <div className="grid gap-6">
-                  <div className="flex gap-4">
-                    <div className="bg-secondary p-3 rounded-md h-fit">
-                      <Globe className="w-6 h-6 text-foreground" />
+                <div className="grid gap-8 pt-4">
+                  <div className="flex gap-6">
+                    <div className="bg-secondary p-4 rounded-lg h-fit">
+                      <Globe className="w-8 h-8 text-foreground" />
                     </div>
                     <div>
-                      <h3 className="font-semibold">Global Discovery</h3>
-                      <p className="text-muted-foreground">
-                        Find hidden gems around the world.
+                      <h3 className="text-xl font-semibold mb-2">
+                        Global Discovery
+                      </h3>
+                      <p className="text-muted-foreground leading-relaxed">
+                        Find hidden gems around the world shared by our
+                        community.
                       </p>
                     </div>
                   </div>
-                  <div className="flex gap-4">
-                    <div className="bg-secondary p-3 rounded-md h-fit">
-                      <Share2 className="w-6 h-6 text-foreground" />
+                  <div className="flex gap-6">
+                    <div className="bg-secondary p-4 rounded-lg h-fit">
+                      <Share2 className="w-8 h-8 text-foreground" />
                     </div>
                     <div>
-                      <h3 className="font-semibold">Share Memories</h3>
-                      <p className="text-muted-foreground">
-                        Post your travel highlights.
+                      <h3 className="text-xl font-semibold mb-2">
+                        Share Memories
+                      </h3>
+                      <p className="text-muted-foreground leading-relaxed">
+                        Post your travel highlights and connect with other
+                        travelers.
                       </p>
                     </div>
                   </div>
                 </div>
-                <div className="mt-8">
+                <div className="pt-4">
                   <Link
                     href="/experiences"
-                    className="text-foreground font-medium hover:underline underline-offset-4"
+                    className="text-foreground font-medium hover:underline underline-offset-4 text-lg inline-flex items-center"
                   >
-                    Explore Experiences &rarr;
+                    Explore Experiences <span className="ml-2">→</span>
                   </Link>
                 </div>
               </div>
-              <div className="flex-1 bg-secondary rounded-xl h-80 flex items-center justify-center border border-border">
-                <Globe className="w-24 h-24 text-muted-foreground/50" />
+              <div className="flex-1 bg-secondary rounded-2xl h-[500px] w-full flex items-center justify-center border border-border/50 shadow-sm">
+                <Globe className="w-32 h-32 text-muted-foreground/30" />
               </div>
             </div>
           </div>
         </section>
 
         {/* Call to Action Section */}
-        <section className="py-16 md:py-24 bg-primary text-primary-foreground">
+        <section className="py-32 bg-primary text-primary-foreground">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight">
-              Ready to plan your next adventure?
-            </h2>
-            <p className="text-xl text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
-              Join thousands of travelers who plan better trips with
-              PlanTraverse.
-            </p>
-            <AuthButton
-              isLoggedIn={isLoggedIn}
-              className="inline-block bg-background text-foreground hover:bg-background/90 px-8 py-4 rounded-md transition-all duration-200 font-medium"
-            >
-              {isLoggedIn ? "Check it out" : "Sign Up Now"}
-            </AuthButton>
+            <div className="max-w-3xl mx-auto space-y-8">
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+                Ready to plan your next adventure?
+              </h2>
+              <p className="text-xl text-primary-foreground/80 leading-relaxed">
+                Join thousands of travelers who plan better trips with
+                PlanTraverse.
+              </p>
+              <div className="pt-4">
+                <AuthButton
+                  isLoggedIn={isLoggedIn}
+                  className="inline-flex items-center justify-center bg-background text-foreground hover:bg-background/90 px-10 py-5 rounded-md transition-all duration-200 font-medium text-lg h-14"
+                >
+                  {isLoggedIn ? "Check it out" : "Sign Up Now"}
+                </AuthButton>
+              </div>
+            </div>
           </div>
         </section>
       </main>

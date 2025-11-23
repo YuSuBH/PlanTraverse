@@ -7,43 +7,51 @@ import Link from "next/link";
 
 export default function Navbar({ session }: { session: Session | null }) {
   return (
-    <nav className="bg-white shadow-md py-4 border-b border-t-gray-200">
-      <div className="container mx-auto flex justify-between items-center px-6 lg:px-8">
-        <Link href={"/"} className="flex items-center">
-          <Image src={"/logo.png"} alt="logo" width={50} height={50} />
-          <span className="text-2xl font-bold text-gray-800">PlanTraverse</span>
+    <nav className="bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b border-border/40">
+      <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-8">
+        <Link href={"/"} className="flex items-center gap-2">
+          <Image
+            src={"/logo.png"}
+            alt="logo"
+            width={40}
+            height={40}
+            className="rounded-sm"
+          />
+          <span className="text-xl font-bold tracking-tight">PlanTraverse</span>
         </Link>
 
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center gap-6">
           {session ? (
             <>
-              <Link
-                href={"/trips"}
-                className="text-sm font-medium text-foreground hover:text-foreground/70 transition-colors"
-              >
-                My Trips
-              </Link>
-              <Link
-                href={"/experiences"}
-                className="text-sm font-medium text-foreground hover:text-foreground/70 transition-colors"
-              >
-                Experiences
-              </Link>
-              <Link
-                href={"/experiences/my"}
-                className="text-sm font-medium text-foreground hover:text-foreground/70 transition-colors"
-              >
-                My Experiences
-              </Link>
-              <Link
-                href={"/globe"}
-                className="text-sm font-medium text-foreground hover:text-foreground/70 transition-colors"
-              >
-                Globe
-              </Link>
+              <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+                <Link
+                  href={"/trips"}
+                  className="transition-colors hover:text-foreground/80 text-foreground/60"
+                >
+                  My Trips
+                </Link>
+                <Link
+                  href={"/experiences"}
+                  className="transition-colors hover:text-foreground/80 text-foreground/60"
+                >
+                  Experiences
+                </Link>
+                <Link
+                  href={"/experiences/my"}
+                  className="transition-colors hover:text-foreground/80 text-foreground/60"
+                >
+                  My Experiences
+                </Link>
+                <Link
+                  href={"/globe"}
+                  className="transition-colors hover:text-foreground/80 text-foreground/60"
+                >
+                  Globe
+                </Link>
+              </nav>
 
               <button
-                className="flex items-center justify-center bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer"
+                className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-4 py-2"
                 onClick={logout}
               >
                 Sign Out
@@ -53,12 +61,12 @@ export default function Navbar({ session }: { session: Session | null }) {
             <>
               <Link
                 href={"/experiences"}
-                className="text-sm font-medium text-foreground hover:text-foreground/70 transition-colors"
+                className="text-sm font-medium transition-colors hover:text-foreground/80 text-foreground/60 hidden md:block"
               >
                 Experiences
               </Link>
               <button
-                className="flex items-center justify-center bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer"
+                className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-4 py-2"
                 onClick={login}
               >
                 Sign In

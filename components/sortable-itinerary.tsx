@@ -25,14 +25,25 @@ function SortableItem({ item }: { item: Location }) {
       {...attributes}
       {...listeners}
       style={{ transform: CSS.Transform.toString(transform), transition }}
-      className="p-4 border border-border rounded-md flex justify-between items-center hover:shadow transition-shadow bg-card text-card-foreground"
+      className="p-5 border border-border rounded-lg flex justify-between items-center hover:shadow-md transition-all duration-200 bg-card text-card-foreground group cursor-grab active:cursor-grabbing"
     >
-      <div>
-        <h4 className="font-medium text-foreground">{item.locationTitle}</h4>
-        <p className="text-sm text-muted-foreground truncate max-w-xs">{`Lat: ${item.lat}, Lng: ${item.lng}`}</p>
+      <div className="flex items-center gap-4">
+        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-secondary text-secondary-foreground font-bold text-sm">
+          {item.order + 1}
+        </div>
+        <div>
+          <h4 className="font-semibold text-foreground text-lg">
+            {item.locationTitle}
+          </h4>
+          <p className="text-sm text-muted-foreground truncate max-w-xs font-mono mt-1 opacity-70 group-hover:opacity-100 transition-opacity">
+            {item.lat.toFixed(4)}, {item.lng.toFixed(4)}
+          </p>
+        </div>
       </div>
 
-      <div className="text-sm text-muted-foreground">Day {item.order}</div>
+      <div className="text-sm font-medium text-muted-foreground bg-secondary/50 px-3 py-1 rounded-full">
+        Day {item.order + 1}
+      </div>
     </div>
   );
 }

@@ -23,23 +23,23 @@ export default async function ExperiencesPage() {
   });
 
   return (
-    <div className="h-[calc(100vh-80px)] flex flex-col bg-background">
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+    <div className="h-[calc(100vh-64px)] flex flex-col bg-background">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 flex justify-between items-center border-b border-border/40">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">
             Travel Experiences
           </h1>
-          <p className="text-muted-foreground">
+          <p className="text-muted-foreground mt-1">
             Explore shared travel experiences from around the world
           </p>
         </div>
         {session && (
           <Link href="/experiences/new">
-            <Button>Share Experience</Button>
+            <Button size="lg">Share Experience</Button>
           </Link>
         )}
       </div>
-      <div className="flex-1 container mx-auto px-4 pb-4">
+      <div className="flex-1 w-full">
         <ExperienceMap experiences={experiences} />
       </div>
     </div>

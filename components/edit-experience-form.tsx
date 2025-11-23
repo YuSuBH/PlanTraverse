@@ -53,19 +53,26 @@ export default function EditExperienceForm({
   };
 
   return (
-    <div className="max-w-2xl mx-auto mt-10 px-4">
-      <Card>
-        <CardHeader className="flex flex-row items-center justify-between">
-          <div>Edit Experience</div>
+    <div className="max-w-3xl mx-auto py-12 px-4 sm:px-6">
+      <div className="mb-8 text-center">
+        <h1 className="text-3xl font-bold tracking-tight">Edit Experience</h1>
+        <p className="text-muted-foreground mt-2">
+          Update the details of your shared memory.
+        </p>
+      </div>
+
+      <Card className="border-border shadow-sm">
+        <CardHeader className="flex flex-row items-center justify-between border-b border-border pb-6">
+          <div className="font-semibold text-lg">Experience Details</div>
           <Link href="/experiences/my">
             <Button variant="outline" size="sm">
               Back to My Experiences
             </Button>
           </Link>
         </CardHeader>
-        <CardContent>
+        <CardContent className="p-6 md:p-8">
           <form
-            className="space-y-6"
+            className="space-y-8"
             onSubmit={(e) => {
               e.preventDefault();
 
@@ -94,70 +101,75 @@ export default function EditExperienceForm({
               });
             }}
           >
-            <div>
-              <label className="block text-sm font-medium text-foreground mb-1">
-                Title
-              </label>
-              <input
-                type="text"
-                name="title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                placeholder="My amazing trip to..."
-                className={cn(
-                  "w-full border border-input bg-background px-3 py-2",
-                  "rounded-md focus:outline-none focus:ring-2 focus:ring-ring"
-                )}
-                required
-              />
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  Title
+                </label>
+                <input
+                  type="text"
+                  name="title"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  placeholder="My amazing trip to..."
+                  className={cn(
+                    "w-full border border-input bg-background px-4 py-3",
+                    "rounded-md focus:outline-none focus:ring-2 focus:ring-ring transition-all"
+                  )}
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  Description
+                </label>
+                <textarea
+                  name="description"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  placeholder="Share your experience..."
+                  rows={6}
+                  className={cn(
+                    "w-full border border-input bg-background px-4 py-3",
+                    "rounded-md focus:outline-none focus:ring-2 focus:ring-ring transition-all resize-y"
+                  )}
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  Location Name
+                </label>
+                <input
+                  type="text"
+                  name="locationName"
+                  placeholder="e.g., Eiffel Tower, Paris"
+                  value={locationNameInput}
+                  onChange={(e) => setLocationNameInput(e.target.value)}
+                  className={cn(
+                    "w-full border border-input bg-background px-4 py-3",
+                    "rounded-md focus:outline-none focus:ring-2 focus:ring-ring transition-all"
+                  )}
+                  required
+                />
+              </div>
             </div>
 
-            <div>
-              <label className="block text-sm font-medium text-foreground mb-1">
-                Description
+            <div className="space-y-4 pt-4 border-t border-border">
+              <label className="block text-lg font-semibold text-foreground">
+                Select Location{" "}
+                <span className="text-destructive text-sm align-top">*</span>
               </label>
-              <textarea
-                name="description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                placeholder="Share your experience..."
-                rows={6}
-                className={cn(
-                  "w-full border border-input bg-background px-3 py-2",
-                  "rounded-md focus:outline-none focus:ring-2 focus:ring-ring"
-                )}
-                required
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-foreground mb-1">
-                Location Name
-              </label>
-              <input
-                type="text"
-                name="locationName"
-                placeholder="e.g., Eiffel Tower, Paris"
-                value={locationNameInput}
-                onChange={(e) => setLocationNameInput(e.target.value)}
-                className={cn(
-                  "w-full border border-input bg-background px-3 py-2",
-                  "rounded-md focus:outline-none focus:ring-2 focus:ring-ring"
-                )}
-                required
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
-                Select Location <span className="text-destructive">*</span>
-              </label>
-              <LocationPicker
-                onLocationSelect={handleLocationSelect}
-                initialLocation={{ lat: location.lat, lng: location.lng }}
-              />
+              <div className="bg-secondary/20 p-1 rounded-xl border border-border">
+                <LocationPicker
+                  onLocationSelect={handleLocationSelect}
+                  initialLocation={{ lat: location.lat, lng: location.lng }}
+                />
+              </div>
               {location?.address && (
-                <p className="text-sm text-muted-foreground mt-2">
+                <p className="text-sm text-muted-foreground bg-secondary/50 p-3 rounded-md border border-border/50">
                   <strong>Address:</strong> {location.address}
                 </p>
               )}
@@ -166,41 +178,54 @@ export default function EditExperienceForm({
               <input type="hidden" name="lng" value={location?.lng || ""} />
             </div>
 
-            <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+            <div className="space-y-4 pt-4 border-t border-border">
+              <label className="block text-lg font-semibold text-foreground">
                 Images
               </label>
-              <UploadButton
-                endpoint="imageUploader"
-                onClientUploadComplete={(res) => {
-                  if (res) {
-                    setImageUrls([
-                      ...imageUrls,
-                      ...res.map((file) => ({ url: file.url, key: file.key })),
-                    ]);
-                  }
-                }}
-                onUploadError={(error: Error) => {
-                  alert(`ERROR! ${error.message}`);
-                }}
-              />
+              <div className="border-2 border-dashed border-border rounded-xl p-8 text-center hover:bg-secondary/20 transition-colors">
+                <UploadButton
+                  endpoint="imageUploader"
+                  onClientUploadComplete={(res) => {
+                    if (res) {
+                      setImageUrls([
+                        ...imageUrls,
+                        ...res.map((file) => ({
+                          url: file.url,
+                          key: file.key,
+                        })),
+                      ]);
+                    }
+                  }}
+                  onUploadError={(error: Error) => {
+                    alert(`ERROR! ${error.message}`);
+                  }}
+                  appearance={{
+                    button:
+                      "bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-2 rounded-md text-sm font-medium transition-colors",
+                    allowedContent: "text-muted-foreground text-sm mt-2",
+                  }}
+                />
+              </div>
+
               {imageUrls.length > 0 && (
-                <div className="grid grid-cols-3 gap-2 mt-4">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-6">
                   {imageUrls.map((img, idx) => (
-                    <div key={idx} className="relative">
+                    <div
+                      key={idx}
+                      className="relative group aspect-square rounded-lg overflow-hidden border border-border shadow-sm"
+                    >
                       <Image
                         src={img.url}
                         alt={`Upload ${idx + 1}`}
-                        className="w-full h-32 object-cover rounded-md"
-                        width={200}
-                        height={200}
+                        className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+                        fill
                       />
                       <button
                         type="button"
                         onClick={() =>
                           setImageUrls(imageUrls.filter((_, i) => i !== idx))
                         }
-                        className="absolute top-1 right-1 bg-destructive text-destructive-foreground rounded-full w-6 h-6 flex items-center justify-center text-xs"
+                        className="absolute top-2 right-2 bg-destructive/90 hover:bg-destructive text-white rounded-full w-7 h-7 flex items-center justify-center text-sm shadow-sm transition-colors opacity-0 group-hover:opacity-100"
                       >
                         ×
                       </button>
@@ -210,13 +235,21 @@ export default function EditExperienceForm({
               )}
             </div>
 
-            <div className="flex gap-2">
+            <div className="flex gap-4 pt-6">
               <Link href="/experiences/my" className="flex-1">
-                <Button type="button" variant="outline" className="w-full">
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="w-full h-12 text-base"
+                >
                   Cancel
                 </Button>
               </Link>
-              <Button type="submit" disabled={isPending} className="flex-1">
+              <Button
+                type="submit"
+                disabled={isPending}
+                className="flex-1 h-12 text-base"
+              >
                 {isPending ? "Updating..." : "Update Experience"}
               </Button>
             </div>

@@ -140,8 +140,8 @@ export default function LocationPicker({
   };
 
   return (
-    <div className="space-y-4">
-      <div className="flex gap-2">
+    <div className="space-y-6">
+      <div className="flex flex-col sm:flex-row gap-4">
         <Autocomplete
           onLoad={(autocomplete) => {
             autocompleteRef.current = autocomplete;
@@ -153,8 +153,8 @@ export default function LocationPicker({
             type="text"
             placeholder="Search for a place (e.g., Eiffel Tower, Paris)"
             className={cn(
-              "w-full border border-input bg-background px-3 py-2",
-              "rounded-md focus:outline-none focus:ring-2 focus:ring-ring"
+              "w-full border border-input bg-background px-4 py-3",
+              "rounded-md focus:outline-none focus:ring-2 focus:ring-ring transition-all"
             )}
           />
         </Autocomplete>
@@ -162,20 +162,22 @@ export default function LocationPicker({
           type="button"
           onClick={handleGetCurrentLocation}
           variant="outline"
+          className="h-[50px] px-6"
         >
           Use Current Location
         </Button>
       </div>
 
-      <div className="border border-border rounded-md overflow-hidden">
+      <div className="border border-border rounded-xl overflow-hidden shadow-sm">
         <GoogleMap
-          mapContainerStyle={{ width: "100%", height: "400px" }}
+          mapContainerStyle={{ width: "100%", height: "450px" }}
           zoom={mapZoom}
           center={mapCenter}
           onClick={handleMapClick}
           options={{
             streetViewControl: false,
             mapTypeControl: false,
+            fullscreenControl: false,
           }}
         >
           {selectedPosition && (
@@ -188,17 +190,17 @@ export default function LocationPicker({
         </GoogleMap>
       </div>
 
-      <p className="text-sm text-muted-foreground">
-        💡 <strong>Tip:</strong> Search for a place, use your current location,
-        or click anywhere on the map to select coordinates.
-      </p>
-
-      {selectedPosition && (
-        <div className="text-sm text-muted-foreground bg-muted p-3 rounded-md">
-          <strong>Selected coordinates:</strong>{" "}
-          {selectedPosition.lat.toFixed(6)}, {selectedPosition.lng.toFixed(6)}
-        </div>
-      )}
+      <div className="flex items-center justify-between text-sm text-muted-foreground bg-secondary/30 p-4 rounded-lg border border-border/50">
+        <p>
+          💡 <strong>Tip:</strong> Search for a place, use your current
+          location, or click anywhere on the map to select coordinates.
+        </p>
+        {selectedPosition && (
+          <div className="font-mono text-xs bg-background px-2 py-1 rounded border border-border">
+            {selectedPosition.lat.toFixed(6)}, {selectedPosition.lng.toFixed(6)}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

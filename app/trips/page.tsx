@@ -30,22 +30,23 @@ export default async function TripsPage() {
   }
 
   return (
-    <div className="space-y-6 container mx-auto px-4 py-8 bg-background min-h-screen">
+    <div className="space-y-8 container mx-auto px-4 sm:px-6 lg:px-8 py-12 bg-background min-h-screen">
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold tracking-tight"> Dashboard</h1>
+        <h1 className="text-4xl font-bold tracking-tight">Dashboard</h1>
         <Link href="/trips/new">
-          <Button>New Trip</Button>
+          <Button size="lg">New Trip</Button>
         </Link>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Welcome back, {session.user?.name} </CardTitle>
+      <Card className="p-6">
+        <CardHeader className="p-0 mb-4">
+          <CardTitle className="text-2xl">
+            Welcome back, {session.user?.name}
+          </CardTitle>
         </CardHeader>
 
-        <CardContent>
-          <p className="text-muted-foreground">
-            {" "}
+        <CardContent className="p-0">
+          <p className="text-muted-foreground text-lg">
             {trips.length === 0
               ? "Start planning your first trip."
               : `You have ${trips.length} ${
@@ -59,34 +60,38 @@ export default async function TripsPage() {
         </CardContent>
       </Card>
 
-      <div>
-        <h2 className="text-xl font-semibold mb-4 tracking-tight">
+      <div className="space-y-6">
+        <h2 className="text-2xl font-semibold tracking-tight">
           Your recent trips
         </h2>
         {trips.length === 0 ? (
-          <Card>
-            <CardContent className="flex flex-col items-center justify-center py-8">
+          <Card className="border-dashed">
+            <CardContent className="flex flex-col items-center justify-center py-16">
               <h3 className="text-xl font-medium mb-2">No trips yet.</h3>
-              <p className="text-center mb-4 max-w-md text-muted-foreground">
+              <p className="text-center mb-6 max-w-md text-muted-foreground">
                 Start planning your adventure by creating your first trip.
               </p>
               <Link href="/trips/new">
-                <Button>Create Trip</Button>
+                <Button size="lg">Create Trip</Button>
               </Link>
             </CardContent>
           </Card>
         ) : (
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {sortedTrips.slice(0, 6).map((trip, key) => (
               <Link key={key} href={`/trips/${trip.id}`}>
-                <Card className="h-full hover:shadow-md transition-shadow hover:border-primary/50">
-                  <CardHeader className="line-clamp-1">{trip.title}</CardHeader>
+                <Card className="h-full hover:shadow-lg transition-all duration-200 hover:border-primary/50 group">
+                  <CardHeader>
+                    <CardTitle className="line-clamp-1 group-hover:text-primary transition-colors">
+                      {trip.title}
+                    </CardTitle>
+                  </CardHeader>
 
                   <CardContent>
-                    <p className="text-sm line-clamp-2 mb-2 text-muted-foreground">
+                    <p className="text-muted-foreground line-clamp-2 mb-4 h-12">
                       {trip.description}
                     </p>
-                    <div className="text-sm text-muted-foreground/80">
+                    <div className="text-sm text-muted-foreground/80 font-medium">
                       {new Date(trip.startDate).toLocaleDateString()} -{" "}
                       {new Date(trip.startDate).toLocaleDateString()}
                     </div>
