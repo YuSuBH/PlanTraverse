@@ -4,8 +4,6 @@ import { auth } from "@/auth";
 import Link from "next/link";
 import AuthButton from "@/components/auth-button";
 
-//globe country visited
-
 export default async function LandingPage() {
   const session = await auth();
   const isLoggedIn = !!session?.user;

@@ -86,23 +86,23 @@ export default function TripDetailClient({ trip }: TripDetailClientProps) {
 
       <div className="bg-card rounded-xl border border-border shadow-sm overflow-hidden">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <div className="border-b border-border px-6 pt-4">
-            <TabsList className="bg-transparent p-0 h-auto space-x-8">
+          <div className="px-6 pt-6">
+            <TabsList className="bg-secondary/50 p-1 h-auto rounded-full inline-flex">
               <TabsTrigger
                 value="overview"
-                className="text-lg px-0 py-3 rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-transparent data-[state=active]:shadow-none"
+                className="text-base sm:text-lg px-6 py-2.5 rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground transition-all"
               >
                 Overview
               </TabsTrigger>
               <TabsTrigger
                 value="itinerary"
-                className="text-lg px-0 py-3 rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-transparent data-[state=active]:shadow-none"
+                className="text-base sm:text-lg px-6 py-2.5 rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground transition-all"
               >
                 Itinerary
               </TabsTrigger>
               <TabsTrigger
                 value="map"
-                className="text-lg px-0 py-3 rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-transparent data-[state=active]:shadow-none"
+                className="text-base sm:text-lg px-6 py-2.5 rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground transition-all"
               >
                 Map
               </TabsTrigger>

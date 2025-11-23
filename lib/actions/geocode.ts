@@ -14,14 +14,21 @@ export async function getCountryFromCoords(
 
   const data = await response.json();
 
+  if (!data.results || data.results.length === 0) {
+    return {
+      country: "Unknown",
+      formattedAddress: "Unknown Location",
+    };
+  }
+
   const result = data.results[0];
   const countryComponent = result.address_components.find(
-    (component: { types: string[]; lngg_name: string }) =>
+    (component: { types: string[]; long_name: string }) =>
       component.types.includes("country")
   );
 
   return {
-    country: countryComponent.lngg_name || "Unknown",
-    formattedAddress: result.formatted_address,
+    country: countryComponent?.long_name || "Unknown",
+    formattedAddress: result.formatted_address || "Unknown Location",
   };
 }

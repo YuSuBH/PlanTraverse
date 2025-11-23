@@ -63,7 +63,7 @@ export default function GlobePage() {
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Visualize your adventures across the globe and track the countries
-              you've explored.
+              you&apos;ve explored.
             </p>
           </div>
 
