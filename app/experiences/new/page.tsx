@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { createExperience } from "@/lib/actions/create-experience";
 import { UploadButton } from "@/lib/upload-thing";
 import { cn } from "@/lib/utils";
