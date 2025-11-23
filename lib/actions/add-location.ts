@@ -4,31 +4,26 @@ import { auth } from "@/auth";
 import { prisma } from "../prisma";
 import { redirect } from "next/navigation";
 
-async function geocodeAddress(address: string) {
-  const apikey = process.env.GOOGLE_MAPS_API_KEY!;
-  const response = await fetch(
-    `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
-      address
-    )}&key=${apikey}`
-  );
-
-  const data = await response.json();
-  const { lat, lng } = data.results[0].geometry.location;
-  return { lat, lng: lng };
-}
-
 export async function addLocation(formData: FormData, tripId: string) {
   const session = await auth();
   if (!session) {
     throw new Error("Not authenticated.");
   }
 
-  const address = formData.get("address")?.toString();
-  if (!address) {
-    throw new Error("Missing Address.");
+  const locationName = formData.get("locationName")?.toString();
+  const latStr = formData.get("lat")?.toString();
+  const lngStr = formData.get("lng")?.toString();
+
+  if (!locationName || !latStr || !lngStr) {
+    throw new Error("Missing required location data.");
   }
 
-  const { lat, lng } = await geocodeAddress(address);
+  const lat = parseFloat(latStr);
+  const lng = parseFloat(lngStr);
+
+  if (isNaN(lat) || isNaN(lng)) {
+    throw new Error("Invalid coordinates.");
+  }
 
   const count = await prisma.location.count({
     where: { tripId },
@@ -36,7 +31,7 @@ export async function addLocation(formData: FormData, tripId: string) {
 
   await prisma.location.create({
     data: {
-      locationTitle: address,
+      locationTitle: locationName,
       lat,
       lng,
       tripId,
